@@ -11,39 +11,22 @@ body:
       value: |
         感谢您更新软件包信息！
 
-        ---
-        **提示**：提交前请查阅 [YML 字段说明](../docs/YML_SCHEMA.md)。
-
   - type: input
     id: package-name
     attributes:
       label: 软件包名称
-      description: 需要更新的软件包名称
       placeholder: "例如: jq, fzf, delta"
     validations:
       required: true
 
   - type: textarea
-    id: current-info
+    id: update-info
     attributes:
-      label: 当前信息
-      description: 需要更新的字段当前内容
-      placeholder: "例如：当前安装命令是 brew install jq"
+      label: 更新内容
+      description: 请说明需要更新什么，以及更新后的内容
+      placeholder: |
+        例如：
+        安装命令需要从 brew install jq 更新为 brew install jq-devel
+        原因：官方已启用新命名
     validations:
       required: true
-
-  - type: textarea
-    id: updated-info
-    attributes:
-      label: 更新后的信息
-      description: 更新后的内容
-      placeholder: "例如：更新为 brew install jq-git"
-    validations:
-      required: true
-
-  - type: textarea
-    id: update-reason
-    attributes:
-      label: 更新原因
-      description: 简述更新原因
-      placeholder: "例如：官方已发布新版本"

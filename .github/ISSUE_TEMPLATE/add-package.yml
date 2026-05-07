@@ -13,9 +13,6 @@ body:
 
         请提供以下基本信息，其他内容（分类、中英文描述、安装命令规范化）由 AI 在生成 PR 时完成。
 
-        ---
-        **提示**：提交前请查阅 [YML 字段说明](../docs/YML_SCHEMA.md)。
-
   - type: input
     id: package-name
     attributes:
