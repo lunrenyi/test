@@ -63,8 +63,8 @@ desc:
 ```yaml
 rule:
   <os>/<tool>:       # 操作系统/包管理器组合
-    cmd: <command>    # 安装命令
-    reference: <url>  # 命令来源 URL（可选但推荐）
+    cmd: <command>    # 安装命令（必填）
+    reference: <url>  # 命令来源 URL（必填）
     dsnap: <pkg>      # Debian 快照包名（可选）
 ```
 
@@ -147,7 +147,7 @@ desc:
 rule:
   darwin/brew:
     cmd: brew install jq
-    reference: https://formulae.brew.sh/formula/jq#default
+    reference: https://command-not-found.com/jq
 
   debian/apt:
     cmd: sudo apt-get install jq
@@ -161,16 +161,16 @@ rule:
 
   arch/pacman:
     cmd: sudo pacman -S jq
-    reference: https://wiki.archlinux.org/title/Jq
+    reference: https://command-not-found.com/jq
 
   /cargo:
     cmd: cargo install jq
-    reference: https://github.com/jqlang/jq/releases
+    reference: https://command-not-found.com/jq
     dsnap: jq
 
   (win|wsl2)/scoop:
     cmd: scoop install jq
-    reference: https://scoop.sh/#/apps?q=jq
+    reference: https://command-not-found.com/jq
 ```
 
 ---
@@ -181,7 +181,7 @@ rule:
 A: 参考 [分类指南](./CATEGORIES.md)，按软件的主要功能进行分类。
 
 **Q: reference 字段是必填的吗？**
-A: 不是必填，但推荐填写，以便审核人员验证安装命令的正确性。
+A: 是的，`reference` 字段是必填的。请提供安装命令的官方文档或权威来源链接。
 
 **Q: 一个软件支持多个系统的安装命令，可以只填一个吗？**
 A: 可以。rule 字段支持任意数量的系统/工具组合，填写常见的系统即可。

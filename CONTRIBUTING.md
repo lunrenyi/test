@@ -61,6 +61,7 @@ rule:
 
 - [YML 字段完整说明](./docs/YML_SCHEMA.md)
 - [分类规则详解](./docs/CATEGORIES.md)
+- [AI 自动填写指南](./docs/AUTO_FILL_PROMPT.md)
 
 ---
 
@@ -167,6 +168,7 @@ rule:
    │
    └─→ 在 GitHub 上创建 PR
           └─ 使用 PR 模板填写变更说明
+          └─ 可参考 [AI 自动填写指南](./docs/AUTO_FILL_PROMPT.md) 让 AI 帮您生成 yml
 
               ▼
 
@@ -203,8 +205,8 @@ rule:
 ```yaml
 rule:
   <os>/<tool>:       # 如 darwin/brew, debian/apt, arch/pacman
-    cmd: <command>    # 安装命令
-    reference: <url> # 参考链接（可选但推荐）
+    cmd: <command>    # 安装命令（必填）
+    reference: <url> # 参考链接（必填）
     dsnap: <pkg>      # Debian 快照包名（可选）
 ```
 
@@ -279,7 +281,7 @@ A: 不需要，填写常见的系统即可（如 darwin/brew、debian/apt、arch
 
 ### Q: reference 字段是必填的吗？
 
-A: 不是必填，但推荐填写，以便审核人员验证安装命令的正确性。
+A: 是的，`reference` 字段是必填的。请提供安装命令的官方文档或权威来源链接。
 
 ### Q: desc 必须用中文吗？
 

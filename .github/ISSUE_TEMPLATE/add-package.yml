@@ -12,16 +12,14 @@ body:
         感谢您提交新软件包！请填写以下信息。
 
         ---
-        **提示**：
-        - 必填项：软件包名称、主页 URL、描述（中英文）、安装命令
-        - 提交前请先查阅 [YML 字段说明](../docs/YML_SCHEMA.md)
-        - 查看 [分类指南](../docs/CATEGORIES.md) 选择合适的分类
+        **提示**：必填项为软件包名称、主页 URL、描述（中英文）、安装命令。
+        提交前请查阅 [YML 字段说明](../docs/YML_SCHEMA.md)。
 
   - type: input
     id: package-name
     attributes:
       label: 软件包名称
-      description: 软件包的名称（英文，将作为 yml 文件名）
+      description: 软件包的英文名称（将作为 yml 文件名）
       placeholder: "例如: jq, fzf, delta"
     validations:
       required: true
@@ -35,111 +33,20 @@ body:
     validations:
       required: true
 
-  - type: dropdown
+  - type: input
     id: category
     attributes:
-      label: 分类
-      description: 选择最合适的分类
-      options:
-        - ai (AI 服务相关工具)
-        - app (桌面应用)
-        - awk (AWK 相关工具)
-        - blockchain (区块链工具)
-        - build (编译构建工具)
-        - cicd (CI/CD 工具)
-        - cloud (云服务工具)
-        - container (容器工具)
-        - container-kube (Kubernetes 工具)
-        - data-bin (二进制数据处理)
-        - data-csv-tsv (CSV/TSV 处理)
-        - data-json-yml (JSON/YAML 处理)
-        - data-line (行数据处理)
-        - data-text (文本数据处理)
-        - db (数据库通用)
-        - db-mysql (MySQL)
-        - db-pg (PostgreSQL)
-        - db-sqlite (SQLite)
-        - editor (文本编辑器)
-        - email (电子邮件)
-        - entertainment (娱乐工具)
-        - file-disk (磁盘管理)
-        - file-manager (文件管理器)
-        - filesystem (文件系统工具)
-        - finance (金融工具)
-        - font (字体工具)
-        - iac (基础设施即代码)
-        - input-method (输入法)
-        - journey (笔记/日志)
-        - lang (编程语言)
-        - lang-js-ts (JS/TS 工具)
-        - lang-perl-raku (Perl/Raku)
-        - lang-python (Python 生态)
-        - library (编程库)
-        - linter (代码检查)
-        - log (日志分析)
-        - mac (macOS 专用)
-        - markdown-html (Markdown 处理)
-        - misc (杂项工具)
-        - multimedia (多媒体处理)
-        - natural-language (自然语言处理)
-        - network (网络工具)
-        - osman (系统监控)
-        - other (特殊分类)
-        - package-manager (包管理工具)
-        - programming (编程通用)
-        - reader (阅读器/TUI)
-        - scm (版本控制)
-        - scm-git-service (Git 服务平台)
-        - scm-git-tool (Git 工具)
-        - scientific-computing (科学计算)
-        - sdkman (SDKMAN! 生态)
-        - security (安全工具)
-        - shell (Shell 增强)
-        - ssh (SSH 相关)
-        - temp (临时/测试)
-        - terminal (终端模拟器)
-        - test (测试工具)
-        - virtualization (虚拟化)
-        - wasm (WebAssembly)
-        - web (Web 通用)
-        - web-apitool (API 测试)
-        - web-browser (浏览器)
-        - web-infrastructure (Web 基础设施)
-        - web-template (Web 模板)
+      label: 分类目录
+      description: "将 yml 文件放在 src/ 下的哪个目录？例如：network, osman, terminal"
+      placeholder: "例如: network, reader, misc"
     validations:
       required: true
 
-  - type: dropdown
+  - type: input
     id: language
     attributes:
       label: 编程语言
-      description: 软件主要的编程语言
-      options:
-        - C
-        - C++
-        - Go
-        - Rust
-        - Python
-        - JavaScript/TypeScript
-        - Shell/Bash
-        - Ruby
-        - Java
-        - Kotlin
-        - Swift
-        - Zig
-        - OCaml
-        - Perl
-        - Haskell
-        - Scala
-        - C#
-        - Dart
-        - Elixir
-        - Erlang
-        - Nim
-        - R
-        - Julia
-        - Lua
-        - Other
+      placeholder: "例如: Go, Rust, Python, C"
     validations:
       required: true
 
@@ -147,10 +54,8 @@ body:
     id: desc-cn
     attributes:
       label: 描述（中文）
-      description: |
-        请用简洁的语言描述这个软件包的用途。
-      placeholder: |
-        示例：jq 是一个轻量级且灵活的命令行 JSON 处理器
+      description: 一句话描述软件包的用途
+      placeholder: "例如: jq 是一个轻量级且灵活的命令行 JSON 处理器"
     validations:
       required: true
 
@@ -158,10 +63,8 @@ body:
     id: desc-en
     attributes:
       label: 描述（英文）
-      description: |
-        Please describe the package in English.
-      placeholder: |
-        Example: jq is a lightweight and flexible command-line JSON processor
+      description: One sentence describing the package
+      placeholder: "Example: jq is a lightweight and flexible command-line JSON processor"
     validations:
       required: true
 
@@ -171,31 +74,24 @@ body:
       label: 安装命令
       description: |
         请提供该软件在不同系统下的安装命令。
-
-        **格式**：
+        格式：
         <os>/<tool>:
           cmd: <安装命令>
-          reference: <命令来源URL>  # 可选但推荐
-
-        **支持的 OS/工具**：
-        - darwin/brew, darwin/port (macOS)
-        - debian/apt, ubuntu/apt (Debian/Ubuntu)
-        - arch/pacman, arch/yay (Arch Linux)
-        - alpine/apk (Alpine Linux)
-        - fedora/dnf (Fedora)
-        - opensuse/zypper (openSUSE)
-        - freebsd/pkg (FreeBSD)
-        - (win|wsl2)/scoop, (win|wsl2)/choco, (win|wsl2)/winget (Windows)
-        - /pip, /cargo, /go, /asdf, /curl (通用)
+          reference: <命令来源URL>
+          dsnap: <包名>  # 可选
+    validations:
+      required: true
       placeholder: |
         示例：
         darwin/brew:
           cmd: brew install jq
-          reference: https://formulae.brew.sh/formula/jq
+          reference: https://command-not-found.com/jq
 
         debian/apt:
           cmd: sudo apt-get install jq
           reference: https://command-not-found.com/jq
           dsnap: jq
-    validations:
-      required: true
+
+        arch/pacman:
+          cmd: sudo pacman -S jq
+          reference: https://command-not-found.com/jq
