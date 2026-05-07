@@ -1,0 +1,109 @@
+name: "\U0001F41E 报告问题"
+description: 报告软件包安装问题或其他问题
+title: "[问题] <软件包名称>"
+labels: ["bug"]
+assignees: []
+
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        感谢您报告问题！请填写以下信息，以便我们更好地定位和解决问题。
+
+        ---
+        **提示**：
+        - 请尽量提供详细的问题描述和复现步骤
+        - 如果是安装命令问题，请提供您使用的命令和错误信息
+
+  - type: input
+    id: package-name
+    attributes:
+      label: 软件包名称
+      description: 出现问题的软件包名称
+      placeholder: "例如: jq, fzf, delta"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: 操作系统
+      description: 您使用的操作系统
+      options:
+        - macOS (Darwin)
+        - macOS (Homebrew)
+        - Linux (Ubuntu/Debian)
+        - Linux (Arch)
+        - Linux (Alpine)
+        - Linux (Fedora)
+        - Linux (openSUSE)
+        - Linux (其他)
+        - Windows (WSL2)
+        - Windows (Scoop)
+        - Windows (Chocolatey)
+        - Windows (Winget)
+        - FreeBSD
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题描述
+      description: 请详细描述您遇到的问题
+      placeholder: |
+        请尽量详细地描述问题，包括：
+        1. 您想要完成什么操作？
+        2. 遇到了什么错误？
+        3. 错误信息的完整内容是什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+      description: 您希望的行为是什么？
+      placeholder: "例如：执行 brew install jq 后应该成功安装 jq 工具"
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+      description: 实际发生了什么？
+      placeholder: |
+        例如：
+        执行 brew install jq 后报错：
+        Error: No formula named jq
+    validations:
+      required: true
+
+  - type: input
+    id: install-command
+    attributes:
+      label: 执行的安装命令
+      description: 您执行了什么命令？
+      placeholder: "例如：brew install jq"
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-output
+    attributes:
+      label: 错误输出（可选）
+      description: 如果有错误信息，请粘贴完整输出
+      placeholder: |
+        粘贴命令的错误输出...
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 附加信息（可选）
+      description: 任何其他有助于解决问题的信息
+      placeholder: |
+        例如：
+        - x-cmd 版本
+        - 相关的配置文件
+        - 复现步骤

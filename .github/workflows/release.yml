@@ -1,0 +1,25 @@
+name: install-release
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '15 5,23 * * *'
+
+jobs:
+  release-worker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ___X_CMD_GHACTION_X: x1
+      github_token: ${{ secrets.GH_TOKEN }}
+      # GITCODE_TOKEN: ${{ secrets.GCODE_TOKEN }}
+      ssh_key: ${{ secrets.SSH_KEY }}
+      git_user: mnnna
+      git_email: zhengyuhang@x-cmd.com
+      CONCURRENCY: 10
+    steps:
+      - name: main
+        uses: x-cmd/action@main
+        with:
+          code: |
+            x ws bundle || return
+            x ws release || return

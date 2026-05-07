@@ -1,0 +1,91 @@
+name: "\U0001F4DD 更新软件包信息"
+description: 更新已有软件包的描述、安装命令或其他信息
+title: "[更新] <软件包名称>"
+labels: ["update"]
+assignees: []
+
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        感谢您更新软件包信息！请填写以下内容。
+
+        ---
+        **提示**：
+        - 请提供软件包当前的信息和需要更新的内容
+        - 提交前请先查阅 [YML 字段说明](../docs/YML_SCHEMA.md)
+
+  - type: input
+    id: package-name
+    attributes:
+      label: 软件包名称
+      description: 需要更新的软件包名称（yml 文件名）
+      placeholder: "例如: jq, fzf, delta"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: update-type
+    attributes:
+      label: 更新类型
+      description: 选择主要更新类型
+      options:
+        - 描述更新
+        - 安装命令更新
+        - 新增安装方式
+        - 分类调整
+        - 修复错误
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-info
+    attributes:
+      label: 当前信息
+      description: 请提供需要更新的字段当前内容
+      placeholder: |
+        示例：
+        当前 desc.cn：
+        jq 是一个命令行 JSON 处理器
+
+        当前 rule.debian/apt/cmd：
+        sudo apt-get install jq
+    validations:
+      required: true
+
+  - type: textarea
+    id: updated-info
+    attributes:
+      label: 更新后的信息
+      description: 请提供更新后的内容
+      placeholder: |
+        示例：
+        更新后 desc.cn：
+        jq 是一个轻量级且灵活的命令行 JSON 处理器
+
+        更新后 rule.debian/apt/cmd：
+        sudo apt-get install jq-git
+    validations:
+      required: true
+
+  - type: textarea
+    id: update-reason
+    attributes:
+      label: 更新原因
+      description: 请详细说明更新原因
+      placeholder: |
+        示例：
+        1. 官方已发布新版本，安装命令需要更新
+        2. 原描述不够准确，需要优化
+        3. 新增了 Arch Linux AUR 的安装方式
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: 参考链接（可选）
+      description: 如有官方文档或参考来源，请提供链接
+      placeholder: "https://github.com/username/repo/releases"
