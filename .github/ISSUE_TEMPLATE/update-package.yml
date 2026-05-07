@@ -9,10 +9,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        感谢您更新软件包信息！请填写以下内容。
+        感谢您更新软件包信息！
 
         ---
-        提交前请查阅 [YML 字段说明](../docs/YML_SCHEMA.md)。
+        **提示**：提交前请查阅 [YML 字段说明](../docs/YML_SCHEMA.md)。
 
   - type: input
     id: package-name
@@ -23,24 +23,12 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: category
-    attributes:
-      label: 分类目录
-      description: 该 yml 文件所在的目录
-      placeholder: "例如: network, data-json-yml"
-    validations:
-      required: true
-
   - type: textarea
     id: current-info
     attributes:
       label: 当前信息
       description: 需要更新的字段当前内容
-      placeholder: |
-        例如：
-        当前 desc.cn：jq 是一个命令行 JSON 处理器
-        当前 rule.darwin/brew/cmd：brew install jq
+      placeholder: "例如：当前安装命令是 brew install jq"
     validations:
       required: true
 
@@ -49,10 +37,7 @@ body:
     attributes:
       label: 更新后的信息
       description: 更新后的内容
-      placeholder: |
-        例如：
-        更新后 desc.cn：jq 是一个轻量级且灵活的命令行 JSON 处理器
-        更新后 rule.darwin/brew/cmd：brew install jq-git
+      placeholder: "例如：更新为 brew install jq-git"
     validations:
       required: true
 
@@ -61,4 +46,4 @@ body:
     attributes:
       label: 更新原因
       description: 简述更新原因
-      placeholder: "例如：官方安装命令已更新，新增 Homebrew 安装方式"
+      placeholder: "例如：官方已发布新版本"
